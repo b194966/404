@@ -1,3 +1,4 @@
+//Nome : Bruna Rodrigues Barbosa ra:194966 turma E
 // This file is part of www.nand2tetris.org
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
@@ -56,9 +57,28 @@ CHIP ALU {
    Mux16(a=mux2and4, b=mux2add4, sel=f, out=mux5);
 
    Not16(in=mux5, out=notmux5);
-   Mux16(a=mux5, b=notmux5, sel=no, out=out, out[15]= ng);
+   Mux16(a=mux5, b=notmux5, sel=no, out=out, out[15] = ng,
+   out[0]= it0, out[1]= it1, out[2]= it2, out[3]= it3, out[4]= it4,
+   out[5]= it5, out[6]= it6, out[7]= it7, out[8]= it8, out[4]= it9,
+   out[10]= it10, out[11]= it11, out[12]= it12, out[13]= it13, out[14]= it14,
+   out[15]= it15);
 
-   Or(a=out[0], b=out[1], out=it1);
-
+   Or(a=it0, b=it1, out=int1);
+   Or(a=int1, b=it2, out=int2);
+   Or(a=int2, b=it3, out=int3);
+   Or(a=int3, b=it4, out=int4);
+   Or(a=int4, b=it5, out=int5);
+   Or(a=int5, b=it6, out=int6);
+   Or(a=int6, b=it7, out=int7);
+   Or(a=int7, b=it8, out=int8);
+   Or(a=int8, b=it9, out=int9);
+   Or(a=int9, b=it10, out=int10);
+   Or(a=int10, b=it11, out=int11);
+   Or(a=int11, b=it12, out=int12);
+   Or(a=int12, b=it13, out=int13);
+   Or(a=int13, b=it14, out=int14);
+   Or(a=int14, b=it15, out=int15);
+   Not(in=int15,out=zr);
 
 }
+
