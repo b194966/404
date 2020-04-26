@@ -6,36 +6,29 @@
 // Multiplies R0 and R1 and stores the result in R2.
 // (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
 
-@R0
-D=M  //D=RAM[0]
-@n
-M=D // n=RAM[0]
-@R1
-D=M
-@k
-M=D // k=RAM[1]
+//Bruna Rodrigues Barbosa ra 194966 
 @i
 M=1 //i=1
 @sum
-M=0 // sum = 0
+M=0 //sum = 0
 (LOOP)
 @i
-D=M
-@n
-D=D-M
+D=M //D=i
+@R0
+D=D-M // D=i-RAM[0]
 @STOP
 D;JGT // se i>n goto STOP
-@k
-D=M
+@R1
+D=M // D=RAM[1]
 @sum
-D=M // sum= sum+K
+M=M+D // sum= RAM[1]+sum
 @i
 M=M+1 // i=i+1
 @LOOP
 0;JMP
 (STOP)
 @sum
-D=M
+D=M // D=sum
 @R2
 M=D // RAM[2]=sum
 (END)
